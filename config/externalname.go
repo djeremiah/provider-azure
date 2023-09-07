@@ -316,9 +316,9 @@ var ExternalNameConfigs = map[string]config.ExternalName{
 
 	// keyvault
 	"azurerm_key_vault":                                              config.TemplatedStringAsIdentifier("name", "/subscriptions/{{ .setup.configuration.subscription_id }}/resourceGroups/{{ .parameters.resource_group_name }}/providers/Microsoft.KeyVault/vaults/{{ .external_name }}"),
-	"azurerm_key_vault_secret":                                       keyVaultURLIDConf("secrets"),
-	"azurerm_key_vault_key":                                          keyVaultURLIDConf("keys"),
-	"azurerm_key_vault_certificate":                                  keyVaultURLIDConf("certificates"),
+	"azurerm_key_vault_secret":                                       config.IdentifierFromProvider,
+	"azurerm_key_vault_key":                                          config.IdentifierFromProvider,
+	"azurerm_key_vault_certificate":                                  config.IdentifierFromProvider,
 	"azurerm_key_vault_certificate_issuer":                           keyVaultURLIDWithoutVersionConfFn("certificates/issuers"),
 	"azurerm_key_vault_managed_storage_account":                      keyVaultURLIDWithoutVersionConfFn("storage"),
 	"azurerm_key_vault_managed_storage_account_sas_token_definition": config.TemplatedStringAsIdentifier("name", "{{ .parameters.managed_storage_account_id }}/sas/{{ .external_name }}"),
@@ -1854,33 +1854,6 @@ var ExternalNameConfigs = map[string]config.ExternalName{
 	// App Configurations can be imported using the resource id
 	// /subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/resourceGroup1/providers/Microsoft.AppConfiguration/configurationStores/appConf1
 	"azurerm_app_configuration": config.TemplatedStringAsIdentifier("name", "/subscriptions/{{ .setup.configuration.subscription_id }}/resourceGroups/{{ .parameters.resource_group_name }}/providers/Microsoft.AppConfiguration/configurationStores/{{ .external_name }}"),
-}
-
-func keyVaultURLIDConf(resourceType string) config.ExternalName {
-	e := config.NameAsIdentifier
-	e.GetExternalNameFn = getResourceNameFromIDURLFn(2)
-	e.GetIDFn = func(_ context.Context, _ string, parameters map[string]interface{}, _ map[string]interface{}) (string, error) {
-		keyVaultID, ok := parameters["key_vault_id"]
-		if !ok {
-			return "", errors.New("cannot get key_vault_id")
-		}
-		words := strings.Split(keyVaultID.(string), "/")
-		keyVaultName := words[len(words)-1]
-
-		name, ok := parameters["name"]
-		if !ok {
-			return "", errors.New("cannot get name")
-		}
-
-		version, ok := parameters["version"]
-		if !ok {
-			return "", nil
-		}
-
-		return fmt.Sprintf("https://%s.vault.azure.net/%s/%s/%s",
-			keyVaultName, resourceType, name, version), nil
-	}
-	return e
 }
 
 func keyVaultURLIDWithoutVersionConfFn(resourceType string) config.ExternalName {
