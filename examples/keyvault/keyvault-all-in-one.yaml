@@ -6,6 +6,7 @@ metadata:
   name: example
 spec:
   forProvider:
+    name: example
     keyVaultIdSelector:
       matchLabels:
         testing.upbound.io/example-name: example
@@ -61,7 +62,7 @@ spec:
     keyVaultIdSelector:
       matchLabels:
         testing.upbound.io/example-name: example
-
+    name: generated
 ---
 
 apiVersion: keyvault.azure.upbound.io/v1beta1
@@ -95,6 +96,7 @@ metadata:
   name: example-upbound-pem-cert
 spec:
   forProvider:
+    name: example-upbound-pem-cert
     certificate:
     - contentsSecretRef:
         key: cert.pem # https://docs.microsoft.com/en-us/answers/questions/258583/import-certificate-api-for-azure-key-vault.html

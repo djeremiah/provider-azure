@@ -1142,6 +1142,11 @@ func (in *CertificateInitParameters) DeepCopyInto(out *CertificateInitParameters
 			(*in)[i].DeepCopyInto(&(*out)[i])
 		}
 	}
+	if in.Name != nil {
+		in, out := &in.Name, &out.Name
+		*out = new(string)
+		**out = **in
+	}
 	if in.Tags != nil {
 		in, out := &in.Tags, &out.Tags
 		*out = make(map[string]*string, len(*in))
@@ -1480,6 +1485,11 @@ func (in *CertificateObservation) DeepCopyInto(out *CertificateObservation) {
 		*out = new(string)
 		**out = **in
 	}
+	if in.Name != nil {
+		in, out := &in.Name, &out.Name
+		*out = new(string)
+		**out = **in
+	}
 	if in.ResourceManagerID != nil {
 		in, out := &in.ResourceManagerID, &out.ResourceManagerID
 		*out = new(string)
@@ -1573,6 +1583,11 @@ func (in *CertificateParameters) DeepCopyInto(out *CertificateParameters) {
 		in, out := &in.KeyVaultIDSelector, &out.KeyVaultIDSelector
 		*out = new(v1.Selector)
 		(*in).DeepCopyInto(*out)
+	}
+	if in.Name != nil {
+		in, out := &in.Name, &out.Name
+		*out = new(string)
+		**out = **in
 	}
 	if in.Tags != nil {
 		in, out := &in.Tags, &out.Tags
@@ -1997,6 +2012,11 @@ func (in *KeyInitParameters) DeepCopyInto(out *KeyInitParameters) {
 		*out = new(string)
 		**out = **in
 	}
+	if in.Name != nil {
+		in, out := &in.Name, &out.Name
+		*out = new(string)
+		**out = **in
+	}
 	if in.NotBeforeDate != nil {
 		in, out := &in.NotBeforeDate, &out.NotBeforeDate
 		*out = new(string)
@@ -2119,6 +2139,11 @@ func (in *KeyObservation) DeepCopyInto(out *KeyObservation) {
 	}
 	if in.N != nil {
 		in, out := &in.N, &out.N
+		*out = new(string)
+		**out = **in
+	}
+	if in.Name != nil {
+		in, out := &in.Name, &out.Name
 		*out = new(string)
 		**out = **in
 	}
@@ -2249,6 +2274,11 @@ func (in *KeyParameters) DeepCopyInto(out *KeyParameters) {
 		in, out := &in.KeyVaultIDSelector, &out.KeyVaultIDSelector
 		*out = new(v1.Selector)
 		(*in).DeepCopyInto(*out)
+	}
+	if in.Name != nil {
+		in, out := &in.Name, &out.Name
+		*out = new(string)
+		**out = **in
 	}
 	if in.NotBeforeDate != nil {
 		in, out := &in.NotBeforeDate, &out.NotBeforeDate
@@ -3774,6 +3804,11 @@ func (in *SecretInitParameters) DeepCopyInto(out *SecretInitParameters) {
 		*out = new(string)
 		**out = **in
 	}
+	if in.Name != nil {
+		in, out := &in.Name, &out.Name
+		*out = new(string)
+		**out = **in
+	}
 	if in.NotBeforeDate != nil {
 		in, out := &in.NotBeforeDate, &out.NotBeforeDate
 		*out = new(string)
@@ -3861,6 +3896,11 @@ func (in *SecretObservation) DeepCopyInto(out *SecretObservation) {
 		*out = new(string)
 		**out = **in
 	}
+	if in.Name != nil {
+		in, out := &in.Name, &out.Name
+		*out = new(string)
+		**out = **in
+	}
 	if in.NotBeforeDate != nil {
 		in, out := &in.NotBeforeDate, &out.NotBeforeDate
 		*out = new(string)
@@ -3940,6 +3980,11 @@ func (in *SecretParameters) DeepCopyInto(out *SecretParameters) {
 		in, out := &in.KeyVaultIDSelector, &out.KeyVaultIDSelector
 		*out = new(v1.Selector)
 		(*in).DeepCopyInto(*out)
+	}
+	if in.Name != nil {
+		in, out := &in.Name, &out.Name
+		*out = new(string)
+		**out = **in
 	}
 	if in.NotBeforeDate != nil {
 		in, out := &in.NotBeforeDate, &out.NotBeforeDate

@@ -105,6 +105,7 @@ spec:
     keyVaultIdSelector:
       matchLabels:
         testing.upbound.io/example-name: example
+    name: example-backupinstancepostgresql
     valueSecretRef:
       key: value
       name: example-postgresql-server

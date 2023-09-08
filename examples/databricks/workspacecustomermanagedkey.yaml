@@ -142,7 +142,7 @@ spec:
     keyVaultIdSelector:
       matchLabels:
         testing.upbound.io/example-name: exampledatabrickkeyvault
-
+    name: examplekey
 ---
 
 apiVersion: azure.upbound.io/v1beta1
