@@ -18,6 +18,7 @@ import (
 	gremlingraph "github.com/upbound/provider-azure/internal/controller/cosmosdb/gremlingraph"
 	mongocollection "github.com/upbound/provider-azure/internal/controller/cosmosdb/mongocollection"
 	mongodatabase "github.com/upbound/provider-azure/internal/controller/cosmosdb/mongodatabase"
+	postgresqlcluster "github.com/upbound/provider-azure/internal/controller/cosmosdb/postgresqlcluster"
 	sqlcontainer "github.com/upbound/provider-azure/internal/controller/cosmosdb/sqlcontainer"
 	sqldatabase "github.com/upbound/provider-azure/internal/controller/cosmosdb/sqldatabase"
 	sqldedicatedgateway "github.com/upbound/provider-azure/internal/controller/cosmosdb/sqldedicatedgateway"
@@ -42,6 +43,7 @@ func Setup_cosmosdb(mgr ctrl.Manager, o controller.Options) error {
 		gremlingraph.Setup,
 		mongocollection.Setup,
 		mongodatabase.Setup,
+		postgresqlcluster.Setup,
 		sqlcontainer.Setup,
 		sqldatabase.Setup,
 		sqldedicatedgateway.Setup,
