@@ -39,6 +39,7 @@ var (
 		"azurerm_storage_data_lake_gen2_filesystem":                      "storage",
 		"azurerm_monitor_diagnostic_setting":                             "insights",
 		"azurerm_cosmosdb_postgresql_cluster":                            "cosmosdb",
+		"azurerm_cosmosdb_postgresql_coordinator_configuration":          "cosmosdb",
 	}
 
 	// this table holds overrides of Microsoft provider API groups

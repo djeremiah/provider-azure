@@ -1,0 +1,35 @@
+apiVersion: cosmosdb.azure.upbound.io/v1beta1
+kind: PostgreSQLCluster
+metadata:
+  annotations:
+    meta.upbound.io/example-id: cosmosdb/v1beta1/postgresqlcluster
+  labels:
+    testing.upbound.io/example-name: example
+  name: example
+spec:
+  forProvider:
+    administratorLoginPasswordSecretRef:
+      key: example-key
+      name: example-secret
+      namespace: upbound-system
+    coordinatorStorageQuotaInMb: 131072
+    coordinatorVcoreCount: 2
+    location: West Europe
+    nodeCount: 0
+    resourceGroupNameSelector:
+      matchLabels:
+        testing.upbound.io/example-name: example
+
+---
+
+apiVersion: azure.upbound.io/v1beta1
+kind: ResourceGroup
+metadata:
+  annotations:
+    meta.upbound.io/example-id: cosmosdb/v1beta1/postgresqlcluster
+  labels:
+    testing.upbound.io/example-name: example
+  name: example
+spec:
+  forProvider:
+    location: West Europe
